@@ -85,6 +85,8 @@
             <option value=""></option>
             <option value="1">1 Yes</option>
             <option value="2">2 No</option>
+            <option value="3">3 Not Sure</option>
+
           </select>
 
         </div>
@@ -160,7 +162,7 @@
              
             var newFriend = {
                 name: $("#formName").val().trim(),
-                profilePic: $("#formImage").val().trim(),
+                //profilePic: $("#formImage").val().trim(),
                 scores: [
                     $('#Q1').val(),
                     $('#Q2').val(),
@@ -168,11 +170,12 @@
                     $('#Q4').val(),
                     $('#Q5').val(),
                 ]
+    
             };
-             
+              console.log(newFriend);
             var currentURL = window.location.origin;
              
-            $.post(currentURL + "/api/friends", newFriend, function(data) {
+            $.post("/api/friends", newFriend, function(data) {
                 
                 $("#matchName").text(data.name);
                 $("#matchImg").attr("src", data.photo);
@@ -180,7 +183,7 @@
             });
             
             $('#formName').val("");
-            $('#formImage').val("");
+            //$('#formImage').val("");
             $('#Q1').val("");
             $('#Q2').val("");
             $('#Q3').val("");
